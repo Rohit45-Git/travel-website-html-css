@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: white;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Nabvar */
+
+        nav {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff5a3c;
+        }
+
+        .logo span {
+            color: #222;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .menu a {
+            font-size: 15px;
+            color: #333;
+        }
+
+        .menu a:hover {
+            color: #ff5a3c;
+        }
+
+        /* Hero */
+
+        .hero {
+            height: 900px;
+            background: linear-gradient(rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.35)),
+                url("https://images.unsplash.com/photo-1500534623283-312aade485b7") center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 55px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff5a3c;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #ff5a3c;
+        }
+
+        /* About */
+
+        .about {
+            padding: 100px 10%;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image {
+            width: 50%;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .about-content {
+            width: 50%;
+        }
+
+        .small-title {
+            color: #ff5a3c;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .small-content h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .trip-count {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #fff4f1;
+            border-left: 5px solid #ff5a3c;
+            border-radius: 5px;
+        }
+
+        .trip-count h3 {
+            font-size: 40px;
+            color: #ff5a3c;
+        }
+
+        .trip-count p {
+            margin: 0;
+            color: #555;
+        }
+
+        /* services */
+
+        .services {
+            padding: 90px 10%;
+            background-color: white;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .section-text {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .service-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .service-box {
+            width: 250px;
+            background-color: white;
+            padding: 35px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .service-box h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .service-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Blog */
+
+        .blog {
+            padding: 100px 10%;
+        }
+
+        .blog-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .blog-card {
+            width: 31%;
+            min-width: 280px;
+            background-color: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: #ff5a3c;
+            font-weight: bold;
+        }
+
+        /* contact */
+
+        .contact {
+            padding: 90px 10%;
+            background-color: #f8f8f8;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info {
+            width: 45%;
+        }
+
+        .contact-info h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .contact-form {
+            width: 55%;
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .contact-form button {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* footer */
+
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 70px 10% 25px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-box {
+            width: 22%;
+            min-width: 200px;
+        }
+
+        .footer-box h3 {
+            margin-bottom: 20px;
+            color: #ff5a3c;
+        }
+
+        .footer-box p {
+            color: #bbb;
+        }
+
+        .footer-box ul {
+            list-style: none;
+        }
+
+        .footer-box ul li {
+            margin-bottom: 12px;
+            color: #bbb;
+        }
+
+        .footer-box ul li :hover {
+            color: #ff5a3c;
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+            margin-top: 50px;
+            padding-top: 20px;
+            text-align: center;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+
+    <nav>
+        <div class="logo">
+            Trave<span>Land</span>
+        </div>
+
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- NAVBAR Ended -->
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>
+                Explore The World
+                With TravLand
+            </h1>
+
+            <p>
+                Discover beautiful places, experience
+                amazing adventures and create memories
+                that will last forever.
+            </p>
+
+            <a href="#contact" class="btn">
+                Book Now
+            </a>
+
+        </div>
+
+    </section>
+    <!-- Hero ended -->
+
+    <!-- About -->
+
+    <section class="about" id="about">
+
+        <div class="about-container">
+
+            <div class="about-image">
+
+                <img src=" https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="travel">
+
+            </div>
+
+            <div class="about-content">
+
+                <div class="small-title">
+
+                    ABOUT US
+
+                </div>
+
+                <h2>
+                    We Make Your
+                    Travel Dreams Come True.
+                </h2>
+
+                <p>
+                    Welcome to TraveLand. We help travelers
+                    discover beautiful destinations around
+                    the world.
+                </p>
+
+                <p>
+                    Our goal is to provide comfortable,
+                    affordable and memorable travel
+                    experiences for everyone.
+                </p>
+
+                <a href="#" class="btn">
+                    Read More
+                </a>
+
+                <div class="trip-count">
+                    <h3>
+                        1000+
+                    </h3>
+
+                    <p>
+                        Trips Completed
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- About ended... -->
+
+    <!-- Services -->
+
+    <section class="services" id="services">
+        <div class="small-title">
+            OUR SERVICES
+        </div>
+
+        <h2 class="section-title">
+            Service We Provide
+        </h2>
+
+        <p class="section-text">
+            We provide everything you need to make
+            your journey comfortable and enjoyable.
+        </p>
+
+        <div class="service-container">
+
+            <div class="service-box">
+
+                <div class="service-icon">
+                    🏨
+                </div>
+
+                <h3>
+                    Hotel Booking
+                </h3>
+
+                <p>
+                    Find comfortable hotels at
+                    affordable prices.
+                </p>
+
+            </div>
+
+            <div class="service-box">
+
+                <div class="service-icon">
+                    ✈️
+                </div>
+
+                <h3> Flight Booking </h3>
+
+                <p> Book flights easily and travel anywhere in the world. </p>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">
+                    🚢
+                </div>
+                <h3> Ship Booking </h3>
+                <p>
+                    Enjoy wonderful cruise and ship travel experiences.
+                </p>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">
+                    🚗
+                </div>
+                <h3> Car Booking </h3>
+                <p> Get comfortable transportation during your trip. </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+
+    <section class="blog" id="blog">
+        <div class="small-title">
+            OUR BLOG
+        </div>
+        <h2 class="section-title"> Recent Blog Post
+        </h2>
+        <p class="section-text"> Read our latest travel stories, tips and destination guides.
+        </p>
+        <div class="blog-container">
+
+            <div class="blog-card">
+
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Travel">
+
+                <div class="blog-content">
+
+                    <h3>
+                        Amazing Places To Visit
+                    </h3>
+                    <p>
+                        Discover some of the most beautiful places around the world.
+                    </p>
+                    <a href="#" class="read-more"> Read More →
+                    </a>
+                </div>
+            </div>
+            <div class="blog-card">
+
+                <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff" alt="Travel">
+
+                <div class="blog-content">
+
+                    <h3>
+                        Best Travel Experiences
+                    </h3>
+                    <p>
+                        Make your next trip memorable with these amazing experiences.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read More →
+                    </a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1" alt="Travel">
+                <div class="blog-content">
+                    <h3>
+                        Travel Tips For Beginners
+                    </h3>
+                    <p>
+                        Follow these simple tips before starting your next adventure.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read More →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= CONTACT ========================== -->
+
+    <section class="contact" id="contact">
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <div class="small-title">
+                    CONTACT US
+                </div>
+                <h2>
+                    Get In Touch
+                </h2>
+                <p>
+                    Have questions about your next trip? Contact us and our team will help you plan the perfect journey.
+                </p>
+            </div>
+
+            <div class="contact-form">
+
+                <form>
+                    <input type="text" placeholder="Your Name">
+                    <input type="tel" placeholder="Phone Number">
+                    <input type="email" placeholder="Email Address">
+                    <select>
+                        <option> Select Service </option>
+                        <option> Hotel Booking </option>
+                        <option> Flight Booking </option>
+                        <option> Car Booking </option>
+                        <option> Ship Booking </option>
+                    </select>
+
+                    <textarea placeholder="Your Message"> </textarea>
+                    <button type="submit" class="btn"> Send Message </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+
+                <h3> TraveLand </h3>
+                <p> Explore the world with us and create unforgettable memories. </p>
+
+            </div>
+            <div class="footer-box">
+                <h3> Quick Link </h3>
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Trip Package</li>
+                    <li>Services</li>
+                    <li>Gallery</li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3> Support </h3>
+                <ul>
+                    <li>Customer Support</li>
+                    <li>Privacy & Policy</li>
+                    <li>Terms & Condition</li>
+                    <li>Forum</li>
+                    <li>Tour Guide</li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3> Newsletter </h3>
+                <p> Subscribe to our newsletter for travel updates. </p>
+            </div>
+        </div>
+        <div class="copyright"> © 2026 TraveLand. All Rights Reserved. </div>
+    </footer>
+</body>
+
+</html>
